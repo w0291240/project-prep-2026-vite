@@ -9,6 +9,8 @@ server.use(express.urlencoded({ extended: false }))
 server.use(express.json())
 
 server.get("/", (request, response) => { response.send('Hello!') } )
+
+//this is where the routes file is linked
 server.use("/", routes)
 
 server.listen(port, () => { console.log(`server running on port ${port}`) })

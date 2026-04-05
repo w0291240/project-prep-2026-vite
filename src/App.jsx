@@ -104,7 +104,7 @@ const App = props => {
         )
       }
       
-      <Table entries={entries} onEditEntry={ _editEntry } onDeleteEntry={ _deleteEntry } />
+      <Table items={items} onEditEntry={ _editEntry } onDeleteEntry={ _deleteEntry } />
     </div>
   )
 

@@ -1,22 +1,24 @@
 const express = require('express')
-const EntryController = require('./controllers/EntryController.cjs')
+const StoreController = require('./controllers/StoreController.cjs')
 
 const router = express.Router()
 
 //web routes here
 
-//if someone retreives data from http://localhost:5173/entries, run the "index function from EntryController"
-router.get('/entries', EntryController.index)
+//categories routes
+router.get('/categories', StoreController.indexCat)
+router.post('/categories', StoreController.storeCat)
+router.patch('/categories/:id', StoreController.updateCat)
+router.delete('/categories/:id', StoreController.destroyCat)
 
-//if someone sends data to http://localhost:5173/entries, run the "index function from EntryController"
+//items routes
+router.get('/items', StoreController.indexItem)
+router.post('/items', StoreController.storeItem)
+router.patch('/items/:id', StoreController.updateItem)
+router.delete('/items/:id', StoreController.destroyItem)
 
-router.post('/entries', EntryController.store)
+//storefront route
 
-//if someone retreives data from http://localhost:5173, run the "index function from EntryController"
-router.patch('/entries/:entry', EntryController.update)
-
-//if someone retreives data from http://localhost:5173, run the "index function from EntryController"
-router.delete('/entries/:entry', EntryController.destroy)
-
+router.get('storefront', StoreController.getStorefront)
 
 module.exports = router
