@@ -2,6 +2,8 @@ import './AddItem.scss'
 import Button from '../Button/Button.jsx'
 import { useState, useEffect } from 'react'
 
+
+
 const AddItem = props => {
 
     //variables to mirror what is in each input field
@@ -36,13 +38,17 @@ const AddItem = props => {
     }
 
     useEffect(() => {
-        console.log('entry changed')
-        console.log(`entry: ${JSON.stringify(item)}`)
+        console.log('item changed')
+        console.log(`item: ${JSON.stringify(item)}`)
 
-        setButtonState( (item.category_id === '' || item.title === "" || item.description === '' || item.price === '' || item.quantity === '' || item.sku === ''
-        ) ? false : true ) 
-
-    },[item])
+        setButtonState(
+            category_id.trim() !== '' &&
+            title.trim() !== '' &&
+            description.trim() !== '' &&
+            price !== '' &&
+            quantity !== '' &&
+            sku.trim() !== ''
+        ) ? false : true; },[item])
 
     useEffect(() => {
         setItem({ 'category_id' : category_id, 'title': title, 'description': description, 'price': price, 'quantity': quantity, 'sku': sku})
@@ -67,11 +73,17 @@ const AddItem = props => {
 
     return(
         <div className='Form'>
-            <Button clickme={ _add } title='Add Item' enabled={ buttonState }/>
+            
             <br/>
-            <label>Category ID:</label>
-            <input type='text' placeholder='Category ID' value={category_id}
-                   onChange = { e => _detectValueChanged('category_id', e.target.value) } />
+            <label>Category:</label>    
+            <select value={category_id} onChange={e => _detectValueChanged('category_id', e.target.value)}>
+                <option value="">Select a category</option>
+                {props.categories.map(category => (
+                <option key={category.id} value={category.id}>
+                    {category.category_name}
+                </option>
+                ))}
+            </select>
             <br/>
             <label>Item Title:</label>
             <input type='text' placeholder='Item Title' value={title} 
@@ -92,6 +104,8 @@ const AddItem = props => {
             <label>Item SKU:</label>
             <input type='text' placeholder='Item SKU' value={sku} 
                     onChange = { e => _detectValueChanged('sku', e.target.value) } />
+                    <br/>
+                    <Button clickme={ _add } title='Add Item' enabled={ buttonState }/>
         </div>
     )
 }

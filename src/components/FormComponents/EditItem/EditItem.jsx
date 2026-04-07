@@ -9,6 +9,11 @@ const EditItem = props => {
         _clear()
     }
 
+        const _cancel = () => {
+        props.onCancelItem(item)
+        _clear()
+    }
+
     //variables to mirror what is in each input field
     // const [id, setItemID] = useState('')
     const [category_id, setCategoryID] = useState('')
@@ -26,7 +31,7 @@ const EditItem = props => {
     const [buttonState, setButtonState] = useState(false)
 
     const _clear = () => {
-        setItemID('')
+        // setItemID('')
         setCategoryID('')
         setTitle('')
         setDescription('')
@@ -36,8 +41,8 @@ const EditItem = props => {
     }
 
     useEffect(() => {
-        console.log('entry changed')
-        console.log(`entry: ${JSON.stringify(item)}`)
+        console.log('item changed')
+        console.log(`item: ${JSON.stringify(item)}`)
 
          setButtonState( (item.category_id === '' || item.title === "" || item.description === '' || item.price === '' || item.quantity === '' || item.sku === ''
         ) ? false : true ) 
@@ -67,42 +72,52 @@ const _detectValueChanged = (key, value) => {
     }
 
     useEffect(() => {
-        setItemID(props.entry.id)
-        setCategoryID(props.entry.category_id)
-        setTitle(props.entry.title)
-        setDescription(props.entry.description)
-        setPrice(props.entry.price)
-        setQuantity(props.entry.quantity)
-        setSku(props.entry.sku)
+        // setItemID(props.item.id)
+        setCategoryID(props.item.category_id)
+        setTitle(props.item.title)
+        setDescription(props.item.description)
+        setPrice(props.item.price)
+        setQuantity(props.item.quantity)
+        setSku(props.item.sku)
     },[props])//[] should be fine, [props] guarantees values received
 
     return(
-        <div className='EditForm'>
-            <Button clickme={ _update } title='Edit Entry' enabled={ buttonState }/>
+        <div className='EditItem'>
+            
             <br/>
-            <label>Category ID:</label>
-            <input type='text' placeholder='Category ID' value={category_id}
-                   onChange = { e => _detectValueChanged('value1', e.target.value) } />
+            <label>Category:</label>
+            <select value={category_id} onChange={e => _detectValueChanged('category_id', e.target.value)} >
+                <option value="">Select a category</option>
+                {(props.categories ?? []).map(category => (
+                <option key={category.id} value={category.id}>
+                    {category.category_name}
+                </option>
+                ))}
+            </select>
             <br/>
             <label>Item Title:</label>
             <input type='text' placeholder='Item Title' value={title} 
-                    onChange = { e => _detectValueChanged('value2', e.target.value) } />
+                    onChange = { e => _detectValueChanged('title', e.target.value) } />
             <br/>
             <label>Item Description:</label>
             <input type='text' placeholder='Item Description' value={description} 
-                    onChange = { e => _detectValueChanged('value3', e.target.value) } />
+                    onChange = { e => _detectValueChanged('description', e.target.value) } />
             <br/>
             <label>Item Price:</label>
             <input type='text' placeholder='Item Price' value={price} 
-                    onChange = { e => _detectValueChanged('value3', e.target.value) } />
+                    onChange = { e => _detectValueChanged('price', e.target.value) } />
             <br/>
             <label>Item Quantity:</label>
             <input type='text' placeholder='Quantity' value={quantity} 
-                    onChange = { e => _detectValueChanged('value3', e.target.value) } />
+                    onChange = { e => _detectValueChanged('quantity', e.target.value) } />
             <br/>
             <label>Item SKU:</label>
             <input type='text' placeholder='Item SKU' value={sku} 
-                    onChange = { e => _detectValueChanged('value3', e.target.value) } />
+                    onChange = { e => _detectValueChanged('sku', e.target.value) } />
+                    <br/>
+                    <Button clickme={ _update } title='Save Item' enabled={ buttonState }/>
+                    <Button clickme={ _cancel} title='Cancel Edit' enabled={ buttonState }/>
+
         </div>
     )
 }

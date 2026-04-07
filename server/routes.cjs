@@ -19,6 +19,6 @@ router.delete('/items/:id', StoreController.destroyItem)
 
 //storefront route
 
-router.get('storefront', StoreController.getStorefront)
+router.get('/storefront', StoreController.getStorefront)
 
 module.exports = router
