@@ -1,14 +1,57 @@
 
-.container {
+.storefront-grid {
   display: grid;
-  grid-template-columns: auto auto auto;
-  background-color: dodgerblue;
-  padding: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.container div {
-  background-color: #f1f1f1;
-  border: 1px solid black;
-  padding: 10px;
-  font-size: 30px;
-  text-align: center;
+
+.storefront-card {
+  background: #ffffff;
+  border: 1px solid #d9e2ec;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 14px rgba(17, 24, 39, 0.08);
+}
+
+.storefront-card__title {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  color: #1f2937;
+}
+
+.storefront-card__category,
+.storefront-card__description,
+.storefront-card__price {
+  margin: 0 0 8px;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.storefront-card__description {
+  color: #475569;
+}
+
+.storefront-card__price {
+  margin-bottom: 0;
+  color: #0f766e;
+}
+
+.storefront-grid__empty {
+  margin: 0;
+  padding: 16px;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #475569;
+}
+
+@media (max-width: 640px) {
+  .storefront-grid {
+    padding: 12px;
+    gap: 12px;
+    grid-template-columns: 1fr;
+  }
 }

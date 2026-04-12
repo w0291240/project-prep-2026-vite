@@ -1,17 +1,16 @@
 import Banner from "../BannerComponent/Banner";
-import TableItem from "../TableComponents/TableItem/TableItem";
-import TableRowCategory from "../TableComponents/TableRowCategory/TableRowCategory";
-import './ItemPage.scss'
+import storefrontImage from '../../assets/storefront.png';
+import './StorefrontPage.scss'
 import Grid from "./Grid/Grid";
 
-function ItemPage() {
+function StorefrontPage() {
     return (
         <div>
-            <Banner title='Storefront'/>
+            <Banner image={storefrontImage} imageAlt='Storefront banner' />
             <Grid />
 
         </div>
     );
 }
 
-export default ItemPage;
+export default StorefrontPage;

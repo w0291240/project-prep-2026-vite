@@ -1,9 +1,10 @@
 import './Banner.scss'
 
-function Banner({ title }) {
+function Banner({ title, image, imageAlt = 'Banner image' }) {
   return (
     <header className='Banner'>
-      <h1>{title}</h1>
+      {title ? <h1>{title}</h1> : null}
+      {image ? <img src={image} alt={imageAlt} /> : null}
     </header>
   )
 }

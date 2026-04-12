@@ -21,15 +21,19 @@ const Grid = props => {
         },[])
     
     return (
-    <div className='container'>
+    <div className='storefront-grid'>
       {storefrontItems.map(item => (
-        <div key={item.id} className='card'>
-          <h3>{item.title}</h3>
-          <p><strong>Category:</strong> {item.category}</p>
-          <p>{item.description}</p>
-          <p><strong>Price:</strong> ${item.price}</p>
-        </div>
+        <article key={item.id} className='storefront-card'>
+          <h3 className='storefront-card__title'>{item.title}</h3>
+          <p className='storefront-card__category'><strong>Category:</strong> {item.category}</p>
+          <p className='storefront-card__description'>{item.description}</p>
+          <p className='storefront-card__price'><strong>Price:</strong> ${item.price}</p>
+        </article>
       ))}
+
+      {storefrontItems.length === 0 && (
+        <p className='storefront-grid__empty'>No storefront items available yet.</p>
+      )}
     </div>
     );
 }
