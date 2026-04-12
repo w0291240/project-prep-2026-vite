@@ -1,0 +1,58 @@
+.item-page {
+	padding: 12px;
+}
+
+.item-page .Form,
+.item-page .EditItem {
+	margin: 10px 0;
+	padding: 8px;
+	border: 1px solid #dcdcdc;
+	text-align: left;
+}
+
+.item-page label {
+	display: block;
+	margin: 6px 0 4px;
+}
+
+.item-page input,
+.item-page select {
+	width: 100%;
+	max-width: 420px;
+	padding: 4px;
+	margin-bottom: 6px;
+}
+
+.item-page button {
+	padding: 4px 8px;
+	margin-right: 6px;
+}
+
+.item-page button:disabled {
+	opacity: 0.55;
+}
+
+.item-page .Table-Component {
+	margin-top: 12px;
+	overflow-x: auto;
+}
+
+.item-page .Table-Component table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.item-page .Table-Component th,
+.item-page .Table-Component td {
+	padding: 6px;
+	border-bottom: 1px solid #e5e5e5;
+	text-align: left;
+}
+
+.item-page .Table-Component th {
+	background: #f8f8f8;
+}
+
+.item-page .Table-Component tr:last-child td {
+	border-bottom: none;
+}

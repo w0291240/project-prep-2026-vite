@@ -95,7 +95,7 @@ const _cancelEdit = () => {
   }
 
   return(
-      <div className='App'>
+      <div className='category-page'>
 <Banner title='Categories'/>
 {
   editing ? (

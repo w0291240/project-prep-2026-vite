@@ -1,0 +1,57 @@
+.category-page {
+	padding: 12px;
+}
+
+.category-page .Form,
+.category-page .EditCategory {
+	margin: 10px 0;
+	padding: 8px;
+	border: 1px solid #dcdcdc;
+	text-align: left;
+}
+
+.category-page label {
+	display: block;
+	margin: 6px 0 4px;
+}
+
+.category-page input {
+	width: 100%;
+	max-width: 420px;
+	padding: 4px;
+	margin-bottom: 6px;
+}
+
+.category-page button {
+	padding: 4px 8px;
+	margin-right: 6px;
+}
+
+.category-page button:disabled {
+	opacity: 0.55;
+}
+
+.category-page .Table-Component {
+	margin-top: 12px;
+	overflow-x: auto;
+}
+
+.category-page .Table-Component table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.category-page .Table-Component th,
+.category-page .Table-Component td {
+	padding: 6px;
+	border-bottom: 1px solid #e5e5e5;
+	text-align: left;
+}
+
+.category-page .Table-Component th {
+	background: #f8f8f8;
+}
+
+.category-page .Table-Component tr:last-child td {
+	border-bottom: none;
+}

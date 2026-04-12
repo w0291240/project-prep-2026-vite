@@ -109,7 +109,7 @@ const _cancelEdit = () => {
   
 return (
 
- <div className='App'>
+ <div className='item-page'>
       <Banner title='Items'/>
 {
   editing ? (
